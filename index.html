@@ -1,0 +1,887 @@
+<!DOCTYPE HTML>
+<html lang="en-US" class="fade nonumbers">
+<!-- 
+  ^ You can control a few things with the <html> element's classes:
+
+  "fade"      - smooth fade between slides
+  "nonumbers" - remove the slide numbering after the progress bar
+-->
+
+<head>
+  <title>Firefox OS and You: The Web's Best Little Secret Revealed – Angelina Fabbro – JSConf BR 2013</title>
+  <!-- 
+    ^ Don't forget a good title - they show up as bookmarks and in Google 
+  -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1274, user-scalable=no">
+  <link rel="stylesheet" href="themes/mozilla/styles/style.css">
+
+  <style type="text/css">
+    /* Add your own styles here */
+    .talkdescription {
+      font-size: 12px;
+      color: #fff;
+      width: 80%;
+    }
+    .full .talkdescription {
+      display: none;
+    }
+    .slide blockquote.lots {
+      font-size: 30px;
+    }
+    .demourl { 
+      bottom: 20px;
+    }
+    .quotesource::before {
+      content: '~';
+    }
+    #reveal {
+      float: right;
+      margin: 20px 0 0 20px;
+      background: #fff;
+      position: relative;
+    }
+    #reveal img {
+      width: 200px;
+      z-index: 5;
+      display: block;
+      opacity: 0.5;
+      -webkit-transition: 2s;
+      -moz-transition: 2s;
+      -o-transition: 2s;
+      transition: 2s;
+    }
+    #reveal:hover img {
+      opacity: 1;
+    }
+    .full #recycle h2 {
+      margin-top: -40px;
+    }
+    ul.lots li {
+      float: left;
+      width: 50%;
+    }
+    #happy h2 {
+      width: 240px;
+      margin-left: 520px;
+      margin-top: 50px;
+    }
+
+@keyframes blinker { from { opacity: 1.0; } to { opacity: 0.0; } } .blink:hover { animation-name: blinker; animation-iteration-count: infinite; animation-timing-function: cubic-bezier(1.0,0,0,1.0); animation-duration: 1s; } 
+  </style>
+</head>
+<body class="list">
+
+  <header class="caption">
+    <h1>Firefox OS and You: The Web's Best Little Secret Revealed</h1>
+    <p class="footer">Angelina Fabbro, <a href="http://twitter.com/angelinamagnum">@angelinamagnum</a></p>
+  </header>
+  <aside class="talkdescription">
+    <p>This slide deck is using the shower system - roll over the previews to see the notes and click any slide to go into presentation mode. Then use keys to navigate.</p>
+    <p><strong>Abstract: </strong> Firefox OS has landed in out browser (FxOS Simulator) and on some cool devices (Geeksphone) for development, but better than that is that cellular carriers will be launching phones with it sooner rather than later. This talk will demonstrate the basics of the open app ecosystem that Mozilla is trying to encourage. Never made an app specifically for mobile before? I'm going to show you that it is easier than you think, and that if you are a web developer then you already have the skills to be an FxOS app developer.</p>
+  </aside>
+
+  <div id="cover" class="slide cover w"><div>
+    <section>
+      <header>
+        <h2>Firefox OS and You: The Web's Best Little Secret Revealed</h2>
+      </header>
+      <img src="img/foxphone.jpg" alt="firefox phone" class="middle">
+      <small class="byline">
+        Angelina Fabbro, JSConf BR, Fortaleza, Brazil, 21/06/13 
+      </small>
+    <footer class="notes">
+    </footer>
+    </section>
+  </div></div>
+
+  <div id="angelina" class="slide cover w"><div>
+    <section>
+      <header>
+        <h2>I'm Angelina Fabbro</h2>
+        <h2>I live in Vancouver, Canada</h2>
+      </header>
+      <img src="img/vancouver-rain.gif" alt="snuggly wuggly red panda" class="middle">
+    <footer class="notes">
+    </footer>
+    </section>
+  </div></div>
+
+  <div id="helps" class="slide cover w"><div>
+    <section>
+      <header>
+        <h2>I help developers make wonderful things for Firefox OS</h2>
+      </header>
+      <img src="img/red-panda.gif" alt="snuggly wuggly red panda" class="middle">
+    <footer class="notes">
+    </footer>
+    </section>
+  </div></div>
+
+  <div id="secret" class="slide cover w"><div>
+    <section>
+      <header>
+        <h2>I have a secret to share with you.</h2>
+      </header>
+      <img src="img/tell-me.gif" alt="happy critter" class="middle shadow">
+    <footer class="notes">
+    </footer>
+    </section>
+  </div></div>
+
+  <div id="the-big-reveal" class="slide cover w"><div>
+    <section>
+      <header>
+        <h2>You are already a Firefox OS developer</h2>
+      </header>
+      <img src="img/gasp.gif" alt="happy critter" class="middle shadow">
+    <footer class="notes">
+    </footer>
+    </section>
+  </div></div>
+
+  <div id="test" class="slide"><div>
+    <section>
+      <header>
+        <h2>A simple test will confirm:</h2>
+      </header>
+      <h2>Can you write a web application?</h2>
+      <h2>Bonus points: Have you implemented a responsive website?</h2>
+      <h2>If you answere <strong>YES</strong> to <strong>EITHER</strong> of these, you are most of the way there already.</h2>
+    <footer class="notes">
+    </footer>
+    </section>
+  </div></div>
+
+  <div id="why-apps" class="slide"><div>
+    <section>
+      <header>
+        <h2>Why should I care about having my app in the marketplace?</h2>
+      </header>
+      <img src="img/marketplace-ship.png">
+      <h2>Isn't being on the web good enough?</h2>
+      <h2>Isn't a responsive website good enough?</h2>
+    <footer class="notes">
+    </footer>
+    </section>
+  </div></div>
+
+  <div id="compete" class="slide"><div>
+    <section>
+      <header>
+        <h2>Can HTML 5 beat Apple and Android?</h2>
+      </header>
+      <h2>Not our fight</h2>
+      <img src="img/apple-android-fight.jpg" 
+           alt="apple vs. android">
+      <h2>We can disrupt the mobile ecosystem with an alternative</h2>
+    <footer class="notes">
+    </footer>
+    </section>
+  </div></div>
+
+  <div id="more-like-native" class="slide"><div>
+    <section>
+      <header>
+        <h2>The web is becoming more 'native'</h2>
+      </header>
+      <h2>asm.js &amp; Emscripten</h2>
+      <h2>What is 'native' even going to mean anymore?</h2>
+      <h2>In five years..</h2>
+      <h2>...In ten years?</h2>
+    <footer class="notes">
+    </footer>
+    </section>
+  </div></div>
+
+  <div id="plannedobsolscence" class="slide"><div>
+    <section>
+      <header>
+        <h2>Planned or built-in obsolescence</h2>
+      </header>
+      <img src="pictures/h5devconf13/Brooks-Stevens.jpg" 
+           alt="Clifford Brooks Stevens" 
+           class="right shadow" width="300">
+      <blockquote>
+        <p>Instilling in the buyer the desire to own something a little newer, a little better, a little sooner than is necessary.</p>
+        <p class="quotesource">Clifford Brooks Stevens, 1954</p>
+      </blockquote>
+      <p class="demourl">
+        <a href="http://en.wikipedia.org/wiki/Brooks_Stevens">
+          Clifford Brooks Stevens on Wikipedia
+        </a> - 
+        <a href="http://en.wikipedia.org/wiki/Planned_obsolescence">
+          Planned Obsolescence on Wikipedia
+        </a>
+      </p>
+    <footer class="notes">
+    </footer>
+    </section>
+  </div></div>
+
+  <div id="but-i" class="slide"><div>
+    <section>
+      <header>
+        <h2>But I am a web developer! I don't know how to make apps for a mobile phone</h2>
+      </header>
+      <h2>If you can write a web app, you can write a Firefox OS app</h2>
+    <footer class="notes">
+    </footer>
+    </section>
+  </div></div>
+
+  <div id="devtools" class="slide"><div>
+    <section>
+      <header>
+        <h2>We have great tools - the same tools you already use</h2>
+      </header>
+      <img src="img/devtools.jpg" 
+           alt="Firefox devtools" 
+           height="460" 
+           class="middle shadow">
+    <footer class="notes">
+    </footer>
+    </section>
+  </div></div>
+
+  <div id="browsers" class="slide cover"><div>
+    <section>
+      <header>
+        <h2>Browsers are awesome - they play nice now!</h2>
+        <h2>(mostly)</h2>
+      </header>
+      <img src="pictures/h5devconf13/browserponies.png" 
+           alt="Browser ponies" 
+           class="middle shadow">
+    <footer class="notes">
+    </footer>
+    </section>
+  </div></div>
+
+  <div id="solutions" class="slide"><div>
+    <section>
+      <header>
+        <h2>Lots of code to help scaffold your project</h2>
+      </header>
+      <ul class="inline">
+        <li>Bootstrap</li>
+        <li>Grunt</li>
+        <li>Ember</li>
+        <li>Backbone</li>
+        <li>jQuery</li>
+        <li>Sencha</li>
+        <li>Hammer.js</li>
+        <li>Emmett</li>
+        <li>Compass</li>
+        <li>SASS</li>
+        <li>LESS</li>
+        <li>Zepto.js</li>
+        <li>Angular.js</li>
+        <li>Dart</li>
+        <li>Livescript</li>
+        <li>Jasmine</li>
+        <li>Node.js</li>
+        <li>Moustache</li>
+      </ul>
+    <footer class="notes">
+    </footer>
+    </section>
+  </div></div>
+
+  <div id="boilerstrap" class="slide w"><div>
+    <section>
+      <header>
+        <h2>Boom. Cross-universe compatible.</h2>
+      </header>
+      <img src="pictures/jqueryeu/html9boilerstrap.png" 
+           alt="html 9 boilerstrap" 
+           class="middle shadow"> 
+      <p class="demourl">
+        <a href="http://html9responsiveboilerstrapjs.com/">
+          HTML9 Responsive Boilerstrap JS
+        </a>
+      </p>
+    <footer class="notes">
+    </footer>
+    </section>
+  </div></div>
+
+  <div id="cant" class="slide cover h"><div>
+    <section>
+      <header>
+        <h2 style="text-align:center">But isn't all going native?</h2>
+      </header>
+      <img src="img/pouting-dog.jpg" height="400" alt="Pouting dog" class="middle shadow">
+    <footer class="notes">
+    </footer>
+    </section>
+  </div></div>
+
+
+  <div id="blink" class="slide w"><div>
+    <section>
+      <header>
+        <h2>Ding dong, the witch is dead</h2>
+      </header>
+      <div class="blink"><img src="pictures/frontendunited/blink.jpg" alt="Blink announcement" class="middle shadow"></div>
+      <p class="demourl">
+        <a href="http://blog.chromium.org/2013/04/blink-rendering-engine-for-chromium.html">http://blog.chromium.org/2013/04/blink-rendering-engine-for-chromium.html</a>
+      </p>
+    <footer class="notes">
+    </footer>
+    </section>
+  </div></div> 
+
+  <div id="cant2" class="slide cover h"><div>
+    <section>
+      <header>
+        <h2 style="text-align:center">But HTML5 can't do&hellip;</h2>
+      </header>
+      <h2>Stop copying</h2>
+      <h2>Stop buying into hype</h2>
+      <h2>HTML5 on phones is it's own thing</h2>
+      <h2>"Don't try and be original, just try and be good."</h2>
+    <footer class="notes">
+    </footer>
+    </section>
+  </div></div>
+
+  <div id="but-i" class="slide"><div>
+    <section>
+      <header>
+        <h2>But I am a web developer! I don't want a restrictive eco-system</h2>
+      </header>
+      <h2>something about iOS store here</h2>
+    <footer class="notes">
+    </footer>
+    </section>
+  </div></div>
+
+  <div id="marketplace" class="slide"><div>
+    <section>
+      <header>
+        <h2>Marketplace: How apps are deployed on mobile</h2>
+      </header>
+      <figure class="middle shadow frame">
+      <img src="img/firefoxmarketplace.jpg" 
+           alt="Firefox marketplace" 
+           height="400">
+      </figure>     
+      <p class="demourl">
+        <a href="https://marketplace.firefox.com/">Firefox Marketplace</a>
+      </p>
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>
+
+  <div id="everything" class="slide"><div>
+    <section>
+      <header>
+        <h2>Find app by content ✔</h2>
+      </header>
+      <img src="img/everythingme.jpg" 
+           alt="The search interface of Firefox OS" 
+           height="450"
+           class="middle">
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>
+
+  <div id="everything" class="slide"><div>
+    <section>
+      <header>
+        <h2>So how do I start?</h2>
+      </header>
+      <ol>
+        <li>1. Write a web application (FxOS is framework agnostic)</li>
+        <li>2. Add an app manifest</li>
+        <li>3. Deploy to your servers or submit to marketplace</li>
+      </ol>
+      <img src="img/everythingme.jpg" 
+           alt="The search interface of Firefox OS" 
+           height="450"
+           class="middle">
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>
+
+  <div id="manifest" class="slide"><div>
+    <section>
+      <header>
+        <h2>The manifest</h2>
+      </header>
+      <pre>
+        <code>{</code>
+        <code>  "name": "My App",</code>
+        <code>  "description": "My elevator pitch goes here",</code>
+        <code>  "launch_path": "/",</code>
+        <code>  "icons": { "128": "/img/icon-128.png" },</code>
+        <code>  "developer": {</code>
+        <code>    "name": "Your name or organization",</code>
+        <code>    "url": "http://your-homepage-here.org"</code>
+        <code>  }</code>
+        <code>}</code>
+      </pre>
+      <p class="demourl"><a href="https://developer.mozilla.org/en-US/docs/Apps/Manifest">App manifest</a></p>
+    <footer class="notes">
+    </footer>
+    </section>
+  </div></div>
+
+  <div id="threekinds" class="slide"><div>
+    <section>
+      <header>
+        <h2>Three levels of access&hellip;</h2>
+      </header>
+      <ul>
+        <li><mark>Hosted apps</mark> - stored on your server, easy to upgrade, limited access.</li>
+        <li><mark>Privileged apps</mark> - reviewed by the App store, uses a <a href="https://developer.mozilla.org/en-US/docs/Security/CSP/Introducing_Content_Security_Policy">Content Security Policy</a>, hosted on trusted server</li>
+        <li><mark>Certified apps</mark> - part of the OS, only by Mozilla and partners</li>
+      </ul>
+      <p class="demourl"><a href="https://developer.mozilla.org/en-US/docs/Apps/App_permissions">App permissions</a></p>
+    <footer class="notes">
+    </footer>
+    </section>
+  </div></div>
+
+   <div id="webapilist" class="slide"><div>
+    <section>
+      <header>
+        <h2>Web APIs (hosted apps)</h2>
+      </header>
+      <ul class="lots">
+      <li>Vibration API</li>
+      <li>Screen Orientation</li>
+      <li>Geolocation API</li>
+      <li>Mouse Lock API</li>
+      <li>Open WebApps</li>
+      <li>Network Information API</li>
+      <li>Battery Status API</li>
+      <li>Alarm API</li>
+      <li>Push Notifications API</li>
+      <li>WebFM API / FMRadio</li>
+      <li>WebPayment</li>
+      <li>IndexedDB</li>
+      <li>Ambient light sensor</li>
+      <li>Proximity sensor</li>
+      <li>Notification</li>
+      </ul>
+      <p class="demourl">
+        <a href="https://hacks.mozilla.org/2013/02/using-webapis-to-make-the-web-layer-more-capable/">Using WebAPIs to make the web layer more capable</a>
+      </p>      
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>
+
+   <div id="installapp" class="slide"><div>
+    <section>
+      <header>
+        <h2>Install apps from the web</h2>
+      </header>
+        <pre>
+        <code>var installapp = navigator.mozApps.install(manifestURL);</code>
+        <code>installapp.onsuccess = function(data) {</code>
+        <code>  // App is installed</code>
+        <code>};</code>
+        <code>installapp.onerror = function() {</code>
+        <code> // App wasn't installed, info is in </code>
+        <code> // installapp.error.name</code>
+        <code>};</code>
+        </pre>
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>
+
+   <div id="battery" class="slide"><div>
+    <section>
+      <header>
+        <h2>Battery API</h2>
+      </header>
+        <pre>
+          <code>var b = navigator.battery;</code>
+          <code>if (b) {</code>
+          <code>  var level=Math.round(battery.level * 100) + "%",</code>
+          <code>      charging=(battery.charging) ? "" : "not ",</code>
+          <code>      chargeTime=parseInt(battery.chargingTime / 60, 10),</code>
+          <code>      dischargeTime=parseInt(battery.dischargingTime/60,10);</code>
+          <code>  b.addEventListener("levelchange", show);</code>
+          <code>  b.addEventListener("chargingchange", show);</code>
+          <code>  b.addEventListener("chargingtimechange", show);</code>
+          <code>  b.addEventListener("dischargingtimechange", show);</code>
+          <code>}</code>
+        </pre>
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>
+
+   <div id="webapilistprivileged" class="slide"><div>
+    <section>
+      <header>
+        <h2>Web APIs (privileged apps)</h2>
+      </header>
+      <ul>
+        <li>Device Storage API</li>
+        <li>Browser API</li>
+        <li>TCP Socket API</li>
+        <li>Contacts API</li>
+        <li>systemXHR</li>
+      </ul>
+      <p class="demourl">
+        <a href="https://hacks.mozilla.org/2013/02/using-webapis-to-make-the-web-layer-more-capable/">Using WebAPIs to make the web layer more capable</a>
+      </p>      
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>
+
+   <div id="contactsapi" class="slide"><div>
+    <section>
+      <header>
+        <h2>Contacts API</h2>
+      </header>
+        <pre>
+          <code>var contact = new mozContact();</code>
+          <code>contact.init({name: "Christian"});</code>
+          <code>var request = navigator.mozContacts.save(contact);</code>
+          <code>request.onsuccess = function() {</code>
+          <code>  // contact generated</code>
+          <code>};</code>
+          <code>request.onerror = function() {</code>
+          <code>  // contact generation failed</code>
+          <code>};</code>
+        </pre>
+      <footer class="notes">
+        For a hosted, privileged app it is simple to create a new contact. That enables you to sync address books across services, for example.
+      </footer>
+    </section>
+  </div></div>
+
+   <div id="webapilistcertified" class="slide"><div>
+    <section>
+      <header>
+        <h2>Web APIs (certified apps)</h2>
+      </header>
+        <ul class="lots">
+          <li>WebTelephony</li>
+          <li>WebSMS</li>
+          <li>Idle API</li>
+          <li>Settings API</li>
+          <li>Power Management API</li>
+          <li>Mobile Connection API</li>
+          <li>WiFi Information API</li>
+          <li>WebBluetooth</li>
+          <li>Permissions API</li>
+          <li>Network Stats API</li>
+          <li>Camera API</li>
+          <li>Time/Clock API</li>
+          <li>Attention screen</li>
+          <li>Voicemail</li>
+        </ul>
+     <p class="demourl">
+        <a href="https://hacks.mozilla.org/2013/02/using-webapis-to-make-the-web-layer-more-capable/">Using WebAPIs to make the web layer more capable</a>
+      </p>      
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>
+
+  <div id="cant3" class="slide cover h"><div>
+    <section>
+      <header>
+        <h2 style="text-align:center">Why not all for hosted apps?</h2>
+      </header>
+      <img src="img/pouting-dog.jpg" height="400" alt="Pouting dog" class="middle shadow">
+    <footer class="notes">
+    </footer>
+    </section>
+  </div></div>
+
+  <div id="user" class="slide"><div>
+    <section>
+      <header>
+        <h2 style="text-align:center">Web Activities</h2>
+      </header>
+      <ul class="lots">
+        <li>configure</li>
+        <li>costcontrol</li>
+        <li>dial</li>
+        <li>open</li>
+        <li>pick</li>
+        <li>record</li>
+        <li>save-bookmark</li>
+        <li>share</li>
+        <li>view</li>
+        <li>new, f.e type: “websms/sms” or “webcontacts/contact” </li>
+      </ul>
+      <p class="demourl"><a href="https://wiki.mozilla.org/WebAPI/WebActivities">https://wiki.mozilla.org/WebAPI/WebActivities</a></p>
+    <footer class="notes">
+    </footer>
+    </section>
+  </div></div>
+
+  <div id="pick" class="slide"><div>
+    <section>
+      <header>
+        <h2 style="text-align:center">Give access control to the user</h2>
+      </header>
+      <img src="img/pick-activity.jpg" alt="Pick activity" class="middle shadow">
+    <footer class="notes">
+    </footer>
+    </section>
+  </div></div>
+
+  <div id="callactivity" class="slide"><div>
+    <section>
+      <header>
+        <h2>Sending a number to the phone</h2>
+      </header>
+      <pre>
+        <code>var call = new MozActivity({</code>
+        <code>  name: "dial",</code>
+        <code>  data: {</code>
+        <code>    number: "+1804100100"</code>
+        <code>  }</code>
+        <code>});</code>
+      </pre>
+    <footer class="notes">
+    </footer>
+    </section>
+  </div></div>
+
+  <div id="imageactivity" class="slide"><div>
+    <section>
+      <header>
+        <h2>Get an image from the phone (1/2)</h2>
+      </header>
+      <pre>
+        <code>var getphoto = new MozActivity({</code>
+        <code>  name: "pick",</code>
+        <code>  data: {</code>
+        <code>    type: ["image/png", "image/jpg", "image/jpeg"]</code>
+        <code>  }</code>
+        <code>});</code>
+  </pre>
+    <footer class="notes">
+    </footer>
+    </section>
+  </div></div>
+
+  <div id="imageactivity2" class="slide"><div>
+    <section>
+      <header>
+        <h2>Get an image from the phone (2/2)</h2>
+      </header>
+      <pre>
+        <code>getphoto.onsuccess = function () {</code>
+        <code>  var img = document.createElement("img");</code>
+        <code>  if (this.result.blob.type.indexOf("image") != -1) {</code>
+        <code>    img.src = window.URL.createObjectURL(this.result.blob);</code>
+        <code>  }</code>
+        <code>};</code>
+        <code>getphoto.onerror = function () { // error</code>
+        <code>};</code>
+  </pre>
+    <footer class="notes">
+    </footer>
+    </section>
+  </div></div>
+
+  <div id="gettingstarted" class="slide"><div>
+    <section>
+      <header>
+        <h2>I want to make something!</h2>
+      </header>
+      <img src="img/pawing-puppy.gif" 
+           alt="Pawing Puppy" 
+           height="400"
+           class="middle shadow">
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>
+
+  <div id="developerhub" class="slide"><div>
+    <section>
+      <header>
+        <h2>Developer Hub</h2>
+      </header>
+      <img src="img/devhub.jpg" 
+           alt="Developer Hub" 
+           height="400"
+           class="middle shadow">
+      <p class="demourl">
+        <a href="https://marketplace.firefox.com/developers/">Firefox OS Developer Hub</a>
+      </p>
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>
+
+  <div id="simulator" class="slide"><div>
+    <section>
+      <header>
+        <h2>Simulator in the browser</h2>
+      </header>
+      <img src="img/firefoxossimulator.png" 
+           alt="Simulator" 
+           height="400"
+           class="middle shadow">
+      <p class="demourl">
+        <a href="https://hacks.mozilla.org/2012/12/firefox-os-simulator-1-0-is-here/">Firefox OS Simulator 1.0 is here!</a>
+      </p>
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>
+
+  <div id="boilerplate" class="slide"><div>
+    <section>
+      <header>
+        <h2>Firefox OS Boilerplate</h2>
+      </header>
+      <img src="img/boilerplate.png" 
+           alt="Boilerplate App" 
+           height="400"
+           class="middle shadow">
+      <p class="demourl">
+        <a href="https://github.com/robnyman/Firefox-OS-Boilerplate-App">Boilerplate App on GitHub</a>
+      </p>
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>
+
+  <div id="geeksphone" class="slide"><div>
+    <section>
+      <header>
+        <h2>Phones for developers</h2>
+      </header>
+      <img src="img/keon.png" 
+           alt="Geeksphone" 
+           height="400"
+           class="middle shadow">
+      <p class="demourl">
+        <a href="http://www.geeksphone.com/">Geeksphone.com</a>
+      </p>
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>
+
+  <div id="android" class="slide"><div>
+    <section>
+      <header>
+        <h2>Activities/Hosted Apps on Android</h2>
+      </header>
+      <h2>Don't have quite the same access to APIs, but one day</h2>
+      <h2>PhoneGap (soon?)</h2>
+      <figure class="middle shadow swing frame"><img src="img/foxkeh-android.png" 
+           alt="Foxkeh loves android" 
+           ></figure>
+      <footer class="notes">
+      </footer>
+    </section>
+  </div></div>
+
+  <div id="somuchfun" class="slide cover"><div>
+    <section>
+      <header>
+        <h2>So many fun things are developing:</h2>
+      </header>
+      <ul>
+        <li>asm.js</li>
+        <li>WebRTC</li>
+        <li>GetUserMedia</li>
+        <li>CSS3 variables</li>
+        <li>Web components (ShadowDOM, Custom Elements, HTML Imports)</li>
+        <li>WebGL</li>
+        <li>Flexbox</li>
+        <li>Animations</li>
+        <li>Transforms</li>
+        <li>@supports</li>
+      </ul>
+      <img src="pictures/h5devconf13/splashpuddle.jpg" 
+           alt="Jumping into a puddle" 
+           class="middle shadow">
+    <footer class="notes">
+    </footer>
+    </section>
+  </div></div>
+
+  <div id="extend-the-web" class="slide cover"><div>
+    <section>
+      <header>
+        <h2>Extend The Web Forward</h2>
+      </header>
+      <img src="pictures/h5devconf13/splashpuddle.jpg" 
+           alt="Jumping into a puddle" 
+           class="middle shadow">
+    <footer class="notes">
+    </footer>
+    </section>
+  </div></div>
+
+  <div id="talk-to-me" class="slide cover"><div>
+    <section>
+      <header>
+        <h2>If you want help, contact Me</h2>
+      </header>
+      <h2>No really. It's okay.</h2>
+      <h2>angelina@mozilla.com</h2>
+      <img src="pictures/h5devconf13/splashpuddle.jpg" 
+           alt="Jumping into a puddle" 
+           class="middle shadow">
+    <footer class="notes">
+    </footer>
+    </section>
+  </div></div>
+  <div id="thanks" class="slide"><div>
+    <section>
+      <header>
+        <h2>Thanks!</h2>
+      </header>
+        <figure class="frame middle swing">
+        <img src="pictures/appdays/thats-all-fox.jpg"
+             width="600" 
+             alt="that's all firefox">
+        </figure>
+      <ul class="oneline demourl">
+        <li>Angelina Fabbro</li>
+        <li><a href="http://twitter.com/angelinamagnum">@angelinamagnum</a></li>
+        <li><a href="http://afabbro.github.io/jsconfbr2013">
+          http://afabbro.github.io/jsconfbr2013
+        </a></li>
+      </ul>
+    <footer class="notes">
+    </footer>
+    </section>
+  </div></div>
+
+  <!-- <div class="progress"><div></div></div> -->
+  <!-- 
+    ^ don't like a progress bar? just delete this DIV
+  -->
+  <script type="text/javascript">
+    WebFontConfig = {
+      google: { families: [ 'Tauri::latin', 'Alef:400,700:latin' ] }
+    };
+    (function() {
+      var wf = document.createElement('script');
+      wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+        '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+      wf.type = 'text/javascript';
+      wf.async = 'true';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(wf, s);
+    })(); 
+  </script>
+  <script src="scripts/script.js"></script>
+  <!-- Copyright © 2010–2012 Vadim Makeev — pepelsbey.net -->
+</body>
+</html>
